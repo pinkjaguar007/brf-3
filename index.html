@@ -73,12 +73,18 @@
             <div class=" mt-6 flex flex-col gap-4 w-full border-1 rounded-xl border-slate-700 p-6  ">
 
 
-                <div class=" flex justify-between">
-                    <h1>bono</h1>
-                    <p>del</p>
+                <div class="flex items-center justify-between gap-2">
+                    <h1 id="selected-player" class="min-w-0 truncate font-bold">no players is selected</h1>
+
+                    <div class="flex shrink-0 gap-2">
+                        <button id="edit-btn" type="button"
+                            class="rounded-lg bg-blue-500 px-3 py-1 hover:bg-blue-600">Modifier</button>
+                        <button id="delete-btn" type="button"
+                            class="rounded-lg bg-red-500 px-3 py-1 hover:bg-red-600">Supprimer</button>
+                    </div>
                 </div>
 
-                <select name="" id=""
+                <select name="" id="players-list"
                     class=" border-1 border-slate-700 rounded-xl bg-slate-800 w-full border-1 px-4 py-4  ">
 
 
@@ -100,6 +106,21 @@
 
             </div>
 
+            <div class="mt-6 flex w-full flex-col gap-4 rounded-xl border border-slate-700 p-6">
+
+                <h2>players list</h2>
+
+                <div id="players-container" class="mt-6 flex max-h-80 flex-col gap-3 overflow-y-auto pr-2">
+
+                    <div
+                        class="player-card flex cursor-pointer items-center gap-3 rounded-xl border border-slate-700 bg-slate-900 p-4 hover:bg-slate-700">
+                        <span class="player-number rounded-lg bg-slate-700 px-2 py-1 font-bold">1</span>
+                        <span class="player-name min-w-0 truncate font-bold">Bono</span>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
 
         <div class="father w-[70%]">
@@ -219,7 +240,6 @@
                 <h1 item-center class=" text-white text-xl font-bold ">Ajoute un joueur</h1>
 
                 <button id="closemodal" type="button" class=" text-white  rounded-2xl flex bg-slate-900 p-2 ">
-
                     close
                 </button>
 
@@ -235,23 +255,26 @@
                     class=" w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-2xl text-white">
             </div>
 
+
             <p class=" font-bold text-white">Post</p>
 
             <div class="add-position  grid  grid-cols-2  grid-rows-2 gap-4 text-white  ">
 
 
 
-                <button class="bg-slate-900 border-1 rounded-2xl border-slate-700 flex items-center gap-4 px-4 py-2.5">
+                <button type="button"
+                    class="bg-slate-900 border-1 rounded-2xl border-slate-700 flex items-center gap-4 px-4 py-2.5">
                     <span class="size-2.5 rounded-full bg-amber-400"></span>
                     gardian</button>
-                <button class="bg-slate-900 border-1 rounded-2xl border-slate-700 flex items-center gap-4 px-4 py-2.5 ">
+                <button type="button"
+                    class="bg-slate-900 border-1 rounded-2xl border-slate-700 flex items-center gap-4 px-4 py-2.5 ">
                     <span class="size-2.5 rounded-full bg-blue-500"></span>
                     defenseur</button>
-                <button
+                <button type="button"
                     class="bg-slate-900 border-1 rounded-2xl border-slate-700  flex items-center gap-4  px-4 py-2.5">
                     <span class="size-2.5 rounded-full bg-green-500"></span>
                     miliue</button>
-                <button
+                <button type="button"
                     class="bg-slate-900 border-1 rounded-2xl border-slate-700  flex items-center gap-4  px-4 py-2.5">
                     <span class="size-2.5 rounded-full bg-red-500"></span>
                     attaquant</button>
@@ -262,18 +285,19 @@
             <div>
                 <label class="block text-white  font-bold mb-2" for="player-number" class=" ">Numero (1 a 99)
                 </label>
-                <input placeholder="Ex. 7" type="text" id="player-number" player-number="number" required
-                    class=" w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-2xl text-white ">
+                <input placeholder="Ex. 7" type="number" min="1" max="99" id="player-number" player-number="number"
+                    required class=" w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-2xl text-white ">
 
             </div>
 
             <div class="flex justify-end gap-2  ">
 
-                <button class="bg-slate-400  text-white font-bold rounded-xl border-slate-400 px-6 py-2.5">
+                <button type="button" id="anuller-button" class="bg-slate-400  text-white font-bold rounded-xl border-slate-400 px-6 py-2.5">
                     Annuler
                 </button>
 
-                <button class="bg-green-500 text-white font-bold border-1 rounded-xl border-green-500  px-6 py-2.5">
+                <button id="ajouter"
+                    class="bg-green-500 text-white font-bold border-1 rounded-xl border-green-500  px-6 py-2.5">
                     Ajouter
                 </button>
 
@@ -287,6 +311,13 @@
 
     </div>
 
+    <template id="player-template">
+        <div
+            class="player-card flex cursor-pointer items-center gap-3 rounded-xl border border-slate-700 bg-slate-900 p-4 hover:bg-slate-700">
+            <span class="player-number rounded-lg bg-slate-700 px-2 py-1 font-bold"></span>
+            <span class="player-name min-w-0 truncate font-bold"></span>
+        </div>
+    </template>
 
 
 
